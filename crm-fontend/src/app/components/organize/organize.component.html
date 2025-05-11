@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="left-column">
+        <!-- Left content -->
+        <div class="button-filter-group">
+            <h2>Filter</h2>
+            <button mat-icon-button color="primary" (click)="onReset()">
+                <mat-icon>restart_alt</mat-icon>
+            </button>
+        </div>
+
+        <p>Organize your products here.</p>
+        <div>
+            <form [formGroup]="productForm" class="filter-attributes">
+
+                <!-- <mat-form-field class="stock-up-full-width">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category">
+                        @for (category of categoryOps; track category) {
+                        <mat-option [value]="category.categoryId">{{category.categoryName}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="stock-up-full-width">
+                    <mat-label>Color</mat-label>
+                    <mat-select formControlName="color">
+                        @for (color of colorOps; track color) {
+                        <mat-option [value]="color.colorId">{{color.description}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="stock-up-full-width">
+                    <mat-label>Size</mat-label>
+                    <mat-select formControlName="size">
+                        @for (item of sizeOps; track item) {
+                        <mat-option [value]="item.sizeId">{{item.sizeCode}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="stock-up-full-width">
+                    <mat-label>Style</mat-label>
+                    <mat-select formControlName="style">
+                        @for (style of styleOps; track style) {
+                        <mat-option [value]="style.styleId">{{style.description}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="stock-up-full-width">
+                    <mat-label>Tag</mat-label>
+                    <mat-select formControlName="tag">
+                        @for (tag of tagOps; track tag) {
+                        <mat-option [value]="tag.tagId">{{tag.description}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="stock-up-full-width">
+                    <mat-label>Sleeve Length</mat-label>
+                    <mat-select formControlName="sleeveLength">
+                        @for (item of sleeveLengthOps; track item) {
+                        <mat-option [value]="item.sleeveLengthId">{{item.sleeveLengthName}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field> -->
+
+
+                <!-- <mat-label>Product Image</mat-label> -->
+                <!-- <label class="custom-file-upload"> -->
+            </form>
+        </div>
+    </div>
+
+    <div class="main-column">
+        <!-- Main content -->
+        <h2>Organize</h2>
+        <p>Organize your products here.</p>
+        <!-- <button mat-raised-button color="primary" (click)="openBottomSheet">Fold</button> -->
+        <button mat-raised-button (click)="openBottomSheet()">Open file</button>
+        <div class="organize-container">
+            <mat-card *ngFor="let product of products" class="product-card">
+                <mat-card-actions>
+                    <!-- <button mat-raised-button color="primary">Add to Cart</button> -->
+                    <mat-checkbox (change)="check($event, product)"></mat-checkbox>
+                </mat-card-actions>
+                <img mat-card-image
+                    src="https://marketplace.canva.com/EAFrmEpW3lc/1/0/1131w/canva-cream-purple-illustrated-clothing-giveaway-flyer-p_RvFdoZiMY.jpg"
+                    alt="{{ product.productName }}" />
+                <mat-card-header>
+                    <mat-card-title class="card-title">{{ product.productName }}</mat-card-title>
+                    <mat-card-subtitle>{{ product.category?.categoryName }}</mat-card-subtitle>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{ product.description }}</p>
+                    <p class="price">Price: ${{ product.price }}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <!-- Right content -->
+        Right Column
+    </div>
+</div>

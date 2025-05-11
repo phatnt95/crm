@@ -1,0 +1,58 @@
+<!-- <mat-nav-list>
+    <a href="https://keep.google.com/" mat-list-item (click)="openLink($event)">
+        <span matListItemTitle>Google Keep</span>
+        <span matLine>Add to a note</span>
+    </a>
+
+    <a href="https://docs.google.com/" mat-list-item (click)="openLink($event)">
+        <span matListItemTitle>Google Docs</span>
+        <span matLine>Embed in a document</span>
+    </a>
+
+    <a href="https://plus.google.com/" mat-list-item (click)="openLink($event)">
+        <span matListItemTitle>Google Plus</span>
+        <span matLine>Share with your friends</span>
+    </a>
+
+    <a href="https://hangouts.google.com/" mat-list-item (click)="openLink($event)">
+        <span matListItemTitle>Google Hangouts</span>
+        <span matLine>Show to your coworkers</span>
+    </a>
+
+
+</mat-nav-list> -->
+<h2>Chose Location</h2>
+<form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()" class="storage-form">
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Location</mat-label>
+        <mat-select required>
+
+            @for (item of locationOptions; track item) {
+            <mat-option [value]="item.uuId">{{item.locationName}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Cabinet</mat-label>
+        <mat-select required>
+
+            @for (item of cabinetOptions; track item) {
+            <mat-option [value]="item.uuId">{{item.cabinetName}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Storage</mat-label>
+        <mat-select formControlName="storageName" name="storageName" required>
+
+            @for (item of storageOptions; track item) {
+            <mat-option [value]="item.uuId">{{item.storageName}}</mat-option>
+            }
+        </mat-select>
+        <mat-error *ngIf="inventoryForm.get('storageName')?.hasError('required')">
+            Storage Name is required
+        </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Save</button>
+</form>

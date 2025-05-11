@@ -1,0 +1,63 @@
+.organize-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100vh;
+}
+
+.product-card {
+    width: 300px;
+    max-height: fit-content;
+}
+
+.card-title {
+    max-lines: 1;
+    overflow: hidden;
+}
+
+.storage-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    /* Full height */
+}
+
+.left-column {
+    width: 20%;
+    background-color: #f0f0f0;
+    padding: 1rem;
+}
+
+.main-column {
+    flex: 1;
+    /* Takes remaining space */
+    background-color: #ffffff;
+    padding: 1rem;
+}
+
+.right-column {
+    width: 20%;
+    background-color: #f0f0f0;
+    padding: 1rem;
+}
+
+.button-filter-group {
+    display: flex;
+    align-items: center;
+}
+
+.filter-attributes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+}

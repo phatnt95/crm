@@ -1,0 +1,164 @@
+<!-- <mat-card-actions>
+ -->
+<mat-drawer-container class="example-container">
+    <mat-drawer-content>
+
+        <mat-card appearance="outlined">
+            <mat-card-header class="stock-up-header">
+                <mat-card-title>Stock Up</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <form [formGroup]="productForm" class="stock-up-form">
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Product Name" formControlName="name" />
+                        <mat-error *ngIf="productForm.get('name')?.hasError('required')">
+                            Name is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput placeholder="Input product description"
+                            formControlName="description"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="category">
+                            @for (category of categories; track category) {
+                            <mat-option [value]="category.id">{{category.categoryName}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Type</mat-label>
+                        <mat-select formControlName="type">
+                            @for (type of types; track type) {
+                            <mat-option [value]="type.id">{{type.type}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Color</mat-label>
+                        <mat-select formControlName="color">
+                            @for (color of colors; track color) {
+                            <mat-option [value]="color.colorId">{{color.description}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Brand</mat-label>
+                        <mat-select formControlName="brand">
+                            @for (brand of brands; track brand) {
+                            <mat-option [value]="brand.id">{{brand.name}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Sleeve Length</mat-label>
+                        <mat-select formControlName="o">
+                            @for (item of sleeveLengths; track item) {
+                            <mat-option [value]="item.id">{{item.description}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Size</mat-label>
+                        <mat-select formControlName="size">
+                            @for (item of sizes; track item) {
+                            <mat-option [value]="item.id">{{item.code}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Occasion</mat-label>
+                        <mat-select formControlName="o">
+                            @for (item of occasions; track item) {
+                            <mat-option [value]="item.id">{{item.occasion}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Season Code</mat-label>
+                        <mat-select formControlName="seasonCode">
+                            @for (item of seasonCodes; track item) {
+                            <mat-option [value]="item.id">{{item.seasonCode}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Neckline</mat-label>
+                        <mat-select formControlName="neckline">
+                            @for (item of necklines; track item) {
+                            <mat-option [value]="item.id">{{item.necklineStyle}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="stock-up-full-width">
+                        <mat-label>Shoulder</mat-label>
+                        <mat-select formControlName="tag">
+                            @for (item of shoulders; track item) {
+                            <mat-option [value]="item.id">{{item.shoulderStyle}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+
+
+
+                    <!-- <mat-label>Product Image</mat-label> -->
+                    <!-- <label class="custom-file-upload"> -->
+                </form>
+                <div class="button-group">
+
+                    <!-- <button mat-raised-button color="primary" (click)="fileInput.click()">Upload Images</button> -->
+                    <button mat-raised-button color="primary" (click)="triggerFileInput()">Upload Images</button>
+
+
+                    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">
+
+
+                        Create Product
+                    </button>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+    </mat-drawer-content>
+    <mat-drawer mode="side" opened>
+        <mat-card appearance="outlined" *ngIf="imagePreviews.length > 0">
+            <mat-card-title>Image Preview</mat-card-title>
+            <mat-card-header class="stock-up-header">
+            </mat-card-header>
+
+            <mat-card-content>
+                <div class="preview-container">
+                    <img *ngFor="let preview of imagePreviews" [src]="preview" class="preview-img" />
+                </div>
+                <div *ngIf="imagePreviews.length > 0">
+                    <div *ngFor="let url of imagePreviews" style="display:inline-block; margin:10px;">
+                        <img [src]="url" alt="Preview" width="150" height="150"
+                            style="object-fit: cover; border: 1px solid #ccc;" />
+                    </div>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+    </mat-drawer>
+
+</mat-drawer-container>
+<!-- Spinner overlay -->
+<div class="loading-overlay" *ngIf="isLoading">
+    <mat-spinner diameter="60"></mat-spinner>
+</div>
+<input multiple hidden #fileInput type="file" (change)="onImageChange($event)" accept="image/*" multiple="true" />
