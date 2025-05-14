@@ -3,10 +3,10 @@
 
     <span class="spacer"></span>
 
-    <button mat-button routerLink="/home" routerLinkActive="active-link">Home</button>
-    <button mat-button routerLink="/about" routerLinkActive="active-link">About</button>
-    <button mat-button routerLink="/products" routerLinkActive="active-link">Products</button>
-    <button mat-button routerLink="/contact" routerLinkActive="active-link">Contact</button>
+    <button mat-button (click)="navigateTo('/home')">Home</button>
+    <button mat-button (click)="navigateTo('/stock-up')">Stock Up</button>
+    <button mat-button (click)="navigateTo('/organize')">Organize</button>
+    <!-- <button mat-button  >Contact</button> -->
 
 
     <!-- 🔍 Search box -->

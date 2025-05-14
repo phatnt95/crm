@@ -42,7 +42,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 
 @Component({
   selector: 'app-stock-up',
@@ -153,25 +153,31 @@ export class StockUpComponent implements OnInit {
 
   ngOnInit() {
     // initialize the options for the autocomplete
-    this.attributesService.findAllAttributes().subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.categories = data.categories;
-        this.colors = data.colors;
-        this.sizes = data.sizes;
-        // this.styles = data.styles;
-        // this.tagOps = data.tags;
-        this.sleeveLengths = data.sleeve_lengths;
-        this.brands = data.brands;
-        this.occasions = data.occasions;
-        this.shoulders = data.shoulders;
-        this.necklines = data.necklines;
-        this.seasonCodes = data.season_codes;
-      },
-      error: (error) => {
-        console.error('Error fetching categories', error);
-      },
-    });
+    this.attributesService
+      .findAllAttributes('body', false, {
+        httpHeaderAccept: 'application/json', // Example header
+        context: new HttpContext(), // Optional context
+        transferCache: true, // Enable transfer cache if supported
+      })
+      .subscribe({
+        next: (data: any) => {
+          console.log(data);
+          this.categories = data.categories;
+          this.colors = data.colors;
+          this.sizes = data.sizes;
+          // this.styles = data.styles;
+          // this.tagOps = data.tags;
+          this.sleeveLengths = data.sleeve_lengths;
+          this.brands = data.brands;
+          this.occasions = data.occasions;
+          this.shoulders = data.shoulders;
+          this.necklines = data.necklines;
+          this.seasonCodes = data.season_codes;
+        },
+        error: (error) => {
+          console.error('Error fetching categories', error);
+        },
+      });
   }
 
   onSubmit() {
@@ -187,14 +193,32 @@ export class StockUpComponent implements OnInit {
       category: this.categories?.find((item) => {
         return item.id === this.productForm.value.category;
       }),
+      type: this.types.find((item) => {
+        return item.id === this.productForm.value.type;
+      }),
+      brand: this.brands.find((item) => {
+        return item.id === this.productForm.value.brand;
+      }),
       color: this.colors.find((item) => {
         return item.colorId === this.productForm.value.color;
+      }),
+      neckline: this.necklines.find((item) => {
+        return item.id === this.productForm.value.neckline;
       }),
       size: this.sizes.find((item) => {
         return item.id === this.productForm.value.size;
       }),
       style: this.styles.find((item) => {
         return item.id === this.productForm.value.style;
+      }),
+      seasonCode: this.seasonCodes.find((item) => {
+        return item.id === this.productForm.value.seasonCode;
+      }),
+      shoulder: this.shoulders.find((item) => {
+        return item.id === this.productForm.value.shoulder;
+      }),
+      occasion: this.occasions.find((item) => {
+        return item.id === this.productForm.value.occasion;
       }),
       // tag: this.tags.find((item) => {
       //     return item.tagId === this.productForm.value.tag;
@@ -204,28 +228,31 @@ export class StockUpComponent implements OnInit {
       }),
       price: 3000000,
     };
-    // console.log(this.product);
-    // console.log(this.images);
+
     this.productService.createProduct(this.product, this.images).subscribe({
       next: (response) => {
         console.log('Product created:', response);
         // this.router.navigate(['/products', response.productId]);
         this.isLoading = false;
+        console.log(this.isLoading);
         this.snackBar
-          .open('Product created!', 'View', { duration: 2000 })
-          .afterDismissed()
+          .open('Product created!', 'Go to Organize', { duration: 2000 })
+          // .afterDismissed()
+          .onAction()
           .subscribe(() => {
-            this.router.navigate(['/products', response.productId]);
+            // this.router.navigate(['/products', response.productId]);
+            this.router.navigate(['/organize']);
           });
       },
       error: (err) => {
         // console.error('Error creating product:', err);
         this.isLoading = false; // ✅ hide spinner on error
+        console.log(this.isLoading);
+
         console.log('Error creating product:', err);
         this.snackBar.open('Failed to create product', 'Dismiss', {
           duration: 3000,
         }); // ✅ show error message
-        // this.snackBar.open('Failed to create product', 'Dismiss', { duration: 3000 });
       },
     });
   }

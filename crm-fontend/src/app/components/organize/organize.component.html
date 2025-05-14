@@ -75,17 +75,17 @@
         <!-- <button mat-raised-button color="primary" (click)="openBottomSheet">Fold</button> -->
         <button mat-raised-button (click)="openBottomSheet()">Open file</button>
         <div class="organize-container">
-            <mat-card *ngFor="let product of products" class="product-card">
+            <mat-card *ngFor="let product of productDTOs" class="product-card">
                 <mat-card-actions>
                     <!-- <button mat-raised-button color="primary">Add to Cart</button> -->
                     <mat-checkbox (change)="check($event, product)"></mat-checkbox>
                 </mat-card-actions>
                 <img mat-card-image
                     src="https://marketplace.canva.com/EAFrmEpW3lc/1/0/1131w/canva-cream-purple-illustrated-clothing-giveaway-flyer-p_RvFdoZiMY.jpg"
-                    alt="{{ product.productName }}" />
+                    src="{{product.imageUrl}}" alt="{{ product.productName }}" />
                 <mat-card-header>
                     <mat-card-title class="card-title">{{ product.productName }}</mat-card-title>
-                    <mat-card-subtitle>{{ product.category?.categoryName }}</mat-card-subtitle>
+                    <!-- <mat-card-subtitle>{{ product.categoryName }}</mat-card-subtitle> -->
 
                 </mat-card-header>
                 <mat-card-content>

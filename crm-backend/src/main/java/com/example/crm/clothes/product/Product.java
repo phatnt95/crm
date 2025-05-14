@@ -1,8 +1,11 @@
 package com.example.crm.clothes.product;
 
 import com.example.crm.clothes.attributes.models.*;
+import com.example.crm.clothes.product.model.ProductDTO;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.http.MediaType;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,4 +81,8 @@ public class Product {
     private List<ProductImage> images;
 
     private String description;
+
+
+
+//    private MediaType data;
 }

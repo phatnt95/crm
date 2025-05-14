@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.base.service.ts
 api.module.ts
@@ -31,6 +30,7 @@ model/models.ts
 model/neckline.ts
 model/occasion.ts
 model/product.ts
+model/productDTO.ts
 model/productImage.ts
 model/recipient.ts
 model/seasonCode.ts

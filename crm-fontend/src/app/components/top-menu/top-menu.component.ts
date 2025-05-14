@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-menu',
@@ -25,9 +26,12 @@ import { FormsModule } from '@angular/forms';
 })
 export class TopMenuComponent {
   searchText: string = '';
-
+  constructor(private router: Router) {}
   onSearch() {
     console.log('Searching for:', this.searchText);
     // implement filter or navigation logic
+  }
+  navigateTo(page: string) {
+    this.router.navigate([page]);
   }
 }

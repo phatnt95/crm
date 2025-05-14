@@ -11,6 +11,7 @@ export * from './messageEvent';
 export * from './neckline';
 export * from './occasion';
 export * from './product';
+export * from './productDTO';
 export * from './productImage';
 export * from './recipient';
 export * from './seasonCode';

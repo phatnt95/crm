@@ -142,9 +142,9 @@
             </mat-card-header>
 
             <mat-card-content>
-                <div class="preview-container">
+                <!-- <div class="preview-container">
                     <img *ngFor="let preview of imagePreviews" [src]="preview" class="preview-img" />
-                </div>
+                </div> -->
                 <div *ngIf="imagePreviews.length > 0">
                     <div *ngFor="let url of imagePreviews" style="display:inline-block; margin:10px;">
                         <img [src]="url" alt="Preview" width="150" height="150"
