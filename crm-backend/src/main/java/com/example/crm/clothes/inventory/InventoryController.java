@@ -14,12 +14,15 @@ public class InventoryController {
     InventoryService inventoryService;
 
     // post method
-    @PostMapping(path = "/inventory")
+    @PostMapping()
     public ResponseEntity<?> createInventory(@RequestBody InventoryRequest inventoryRequest) {
         return ResponseEntity.ok(inventoryService.saveInventory(inventoryRequest));
     }
 
-
+    @GetMapping
+    public ResponseEntity<?> findInventories() {
+        return ResponseEntity.ok(inventoryService.findInventories());
+    }
 
 }
 

@@ -7,14 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Storage } from './storage';
-import { Bin } from './bin';
-import { Product } from './product';
 
 
 export interface InventoryRequest { 
-    productList?: Array<Product>;
-    storage?: Storage;
-    bin?: Bin;
+    productIDs?: Array<number>;
+    storageId?: number;
+    binId?: number;
 }
 

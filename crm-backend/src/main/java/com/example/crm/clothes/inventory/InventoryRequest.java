@@ -13,7 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InventoryRequest {
-    public List<Product> productList;
-    public Storage storage;
-    public Bin bin;
+//    public List<Product> productList;
+//    public Storage storage;
+//    public Bin bin;
+    public List<Long> productIDs;
+    public Long storageId;
+    public Long binId;
 }

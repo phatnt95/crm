@@ -1,0 +1,43 @@
+<div class="ambula-container">
+    <!-- Left: Filter -->
+    <div class="left-column">
+        <h3>Filter</h3>
+        <!-- Add filters here -->
+        <input type="text" placeholder="Search..." />
+    </div>
+
+    <!-- Center: Draggable Cards -->
+    <div class="center-column">
+        <h3>Cards</h3>
+        <div cdkDropList [cdkDropListData]="cards" class="card-list" (cdkDropListDropped)="onDropHeader($event)">
+            <div class="card" *ngFor="let card of cards" cdkDrag>
+                {{ card }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: Droppable Box -->
+    <div class="right-column">
+        <h3>Drop Here</h3>
+        <div class="wearable">
+            <div cdkDropList [cdkDropListData]="droppedCards" class="header-wear droppable-box"
+                (cdkDropListDropped)="onDropHeader($event)">
+                <div class="card" *ngFor="let card of droppedCards">
+                    {{ card }}
+                </div>
+            </div>
+            <div class="body-wear droppable-box">
+
+            </div>
+            <div class="body-wear droppable-box">
+
+            </div>
+        </div>
+
+        <!-- <div cdkDropList [cdkDropListData]="droppedCards" class="droppable-box" (cdkDropListDropped)="onDrop($event)">
+            <div class="card" *ngFor="let card of droppedCards">
+                {{ card }}
+            </div>
+        </div> -->
+    </div>
+</div>

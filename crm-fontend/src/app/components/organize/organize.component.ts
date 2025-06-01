@@ -197,6 +197,7 @@ export class BottomSheetOverviewExampleSheet {
   locationOptions: Location[] = []; // Initialize storage options array
   storageOptions: Storage[] = []; // Initialize storage options array
   cabinetOptions: Cabinet[] = []; // Initialize storage options array
+  binOptions: Bin[] = []; // Initialize storage options array
   private _bottomSheetRef =
     inject<MatBottomSheetRef<BottomSheetOverviewExampleSheet>>(
       MatBottomSheetRef
@@ -247,9 +248,19 @@ export class BottomSheetOverviewExampleSheet {
         console.error('Error fetching bins:', error); // Handle error
       }
     );
+    this.binService.findBins().subscribe(
+      (data: any) => {
+        console.log('Fetched cabinets:', data); // Log the fetched bins
+        this.binOptions = data; // Assign the fetched bins to the component's binOptions property
+      },
+      (error) => {
+        console.error('Error fetching bins:', error); // Handle error
+      }
+    );
 
     this.inventoryForm = this.fb.group({
       storageName: ['', Validators.required],
+      binName: ['', Validators.required],
     });
     this.selectedProductIds = this.data; // Assign the selected products to the component's selectedProductIds property
   }
@@ -274,8 +285,13 @@ export class BottomSheetOverviewExampleSheet {
     });
     console.log('Storage:', this.storage);
     this.inventoryRequest = {
-      storage: this.storage,
-      productList: this.selectedProductIds,
+      productIDs: this.selectedProductIds
+        ?.map((product) => product.productId)
+        .filter((id): id is number => id !== undefined), // Map selected products to their IDs and filter out undefined
+      storageId: this.storage?.uuId, // Use the uuId of the selected storage
+      binId: this.inventoryForm.value.binName, // Use the selected bin name
+      // storage: this.storage,
+      // productList: this.selectedProductIds,
     };
     console.log('Inventory Request:', this.inventoryRequest); // Log the inventory request object
     this.inventoryService.createInventory(this.inventoryRequest).subscribe(

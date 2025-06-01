@@ -53,6 +53,18 @@
             Storage Name is required
         </mat-error>
     </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Bin</mat-label>
+        <mat-select formControlName="binName" name="binName" required>
+
+            @for (item of binOptions; track item) {
+            <mat-option [value]="item.uuId">{{item.binNumber}}</mat-option>
+            }
+        </mat-select>
+        <mat-error *ngIf="inventoryForm.get('binName')?.hasError('required')">
+            Storage Name is required
+        </mat-error>
+    </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">Save</button>
 </form>

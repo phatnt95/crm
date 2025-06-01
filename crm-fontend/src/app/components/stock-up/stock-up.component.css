@@ -1,7 +1,10 @@
 .stock-up-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: 20px;
+    gap: 20px;
+    justify-content: center;
 }
 
 .stock-up-actions {
@@ -16,12 +19,14 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    color: #ccc;
 }
 
 .button-group {
     display: flex;
     flex-direction: row;
     gap: 12px;
+    justify-content: center;
 }
 
 .loading-overlay {
@@ -36,4 +41,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.stock-up-container {
+    display: flex;
+    height: 100vh;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.form-container {
+    width: 60%;
+}
+
+.image-container {
+    width: 40%;
+}
+
+.form-container, .image-container {
+    background-color: #fff;
+    border: 2px dashed #ccc;
+}
+
+.stock-up-full-width {
+    width: 40%;
 }

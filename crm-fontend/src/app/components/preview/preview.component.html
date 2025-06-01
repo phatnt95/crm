@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="filter-container">
+        <mat-form-field>
+            <input matInput placeholder="Search..." (keypress)="handleEnter($event)">
+        </mat-form-field>
+    </div>
+
+    <div class="products-container">
+        <mat-card *ngFor="let product of productDTOs" class="product-card">
+            <img src={{product.imageUrl}} mat-card-image />
+            <mat-card-actions>
+                <button mat-button (click)="tryme(product)">Try me</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <div class="preview-container">
+        <div class="header-row">
+            <mat-card class="product-card">
+                <img src={{headerImg}} mat-card-image />
+            </mat-card>
+        </div>
+        <div class="middle-row">
+            <mat-card class="product-card">
+                <img src={{bodyImg}} mat-card-image />
+            </mat-card>
+        </div>
+        <div class="footer-row">
+            <mat-card class="product-card">
+                <img src={{footerImg}} mat-card-image />
+            </mat-card>
+        </div>
+    </div>
+</div>

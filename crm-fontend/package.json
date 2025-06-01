@@ -2,7 +2,7 @@
   "name": "crm-fontend",
   "version": "0.0.0",
   "scripts": {
-    "generator": "openapi-generator-cli generate -i http://localhost:8080/v3/api-docs -g typescript-angular -o ./src/app/api",
+    "generator": "openapi-generator-cli generate -i http://localhost:8080/v3/api-docs -g typescript-angular -o ./src/app/api --additional-properties=ngVersion=19.0.0",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

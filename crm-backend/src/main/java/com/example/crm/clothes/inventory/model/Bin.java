@@ -20,7 +20,7 @@ public class Bin  implements Serializable {
 
     @Column(name = "bin_number")
     private String binNumber;
-
+@ManyToOne
     @JoinColumn(name="storage_code")
     private Storage storage;
 }
