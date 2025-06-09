@@ -25,7 +25,7 @@
 }
 
 .products-container, .filter-container, .preview-container {
-    border-radius: 2px dashed black;
+    border-radius: dashed black 2px;
     background-color: rgb(106, 13, 48);
 }
 
@@ -34,7 +34,7 @@
 
     .header-row, .middle-row, .footer-row {
         background-color: antiquewhite;
-        border-radius: 2px;
+        border-radius: dashed black 2px;
         display: flex;
         justify-content: center;
     }
@@ -44,6 +44,7 @@
 
 .product-card {
     max-height: fit-content;
+    max-width: fit-content;
 }
 
 .product-card>img {

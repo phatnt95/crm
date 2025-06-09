@@ -12,8 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class PreviewComponent {
 	productDTOs: ProductDTO[] = [];
-	headerImg: string = 'http://localhost:8080/api/product/image/1';
-	bodyImg: string = 'http://localhost:8080/api/product/image/1';
+	headerImg: string | undefined;
+	bodyImg: string | undefined;
 	footerImg: string | undefined;
 	constructor(private productService: ProductControllerService) {
 		// initializing products.
