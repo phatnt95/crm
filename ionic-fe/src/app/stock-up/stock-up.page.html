@@ -1,0 +1,145 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Stock Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">stock-up</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->
+
+<ion-content [fullscreen]="true" class="stock-up-container">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="7" class="form-container">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="stock-up-header">Stock Up</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <form [formGroup]="productForm" class="stock-up-form">
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Name</ion-label>
+                <ion-input formControlName="name" placeholder="Product Name"></ion-input>
+              </ion-item>
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Description</ion-label>
+                <ion-textarea formControlName="description" placeholder="Input product description"></ion-textarea>
+              </ion-item>
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Category</ion-label>
+                <ion-select formControlName="category">
+                  <ion-select-option *ngFor="let category of categories" [value]="category.id">{{ category.categoryName
+                    }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <!-- <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Type</ion-label>
+                <ion-select formControlName="type">
+                  <ion-select-option *ngFor="let type of types" [value]="type.id">{{ type.type }}</ion-select-option>
+                </ion-select>
+              </ion-item> -->
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Color</ion-label>
+                <ion-select formControlName="color">
+                  <ion-select-option *ngFor="let color of colors" [value]="color.colorId">{{ color.description
+                    }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Brand</ion-label>
+                <ion-select formControlName="brand">
+                  <ion-select-option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name
+                    }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Sleeve Length</ion-label>
+                <ion-select formControlName="sleeveLength">
+                  <ion-select-option *ngFor="let item of sleeveLengths" [value]="item.id">{{ item.description
+                    }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Size</ion-label>
+                <ion-select formControlName="size">
+                  <ion-select-option *ngFor="let item of sizes" [value]="item.id">{{ item.code }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Occasion</ion-label>
+                <ion-select formControlName="occasion">
+                  <ion-select-option *ngFor="let item of occasions" [value]="item.id">{{ item.occasion
+                    }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Season Code</ion-label>
+                <ion-select formControlName="seasonCode">
+                  <ion-select-option *ngFor="let item of seasonCodes" [value]="item.id">{{ item.seasonCode
+                    }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Neckline</ion-label>
+                <ion-select formControlName="neckline">
+                  <ion-select-option *ngFor="let item of necklines" [value]="item.id">{{ item.necklineStyle
+                    }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="stock-up-full-width" lines="full">
+                <ion-label position="stacked">Shoulder</ion-label>
+                <ion-select formControlName="shoulder">
+                  <ion-select-option *ngFor="let item of shoulders" [value]="item.id">{{ item.shoulderStyle
+                    }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <div class="button-group">
+                <ion-button expand="block" (click)="triggerFileInput()">Upload Images</ion-button>
+                <ion-button expand="block" color="primary" (click)="onSubmit()">Create Product</ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="5" class="image-container">
+        <ion-card *ngIf="imagePreviews.length > 0">
+          <ion-card-header>
+            <ion-card-title>Image Preview</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div *ngFor="let url of imagePreviews">
+              <img [src]="url" width="150" height="150" style="object-fit: cover; margin: 10px;" />
+            </div>
+            <div *ngIf="resizedImage">
+              <h3>Ảnh sau khi giảm độ phân giải:</h3>
+              <img [src]="resizedImage" />
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-loading *ngIf="isLoading" message="Loading..." spinner="circles" [isOpen]="isLoading"></ion-loading>
+
+  <input hidden type="file" #fileInput (change)="onImageChange($event)" accept="image/*" multiple />
+</ion-content>

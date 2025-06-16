@@ -182,6 +182,9 @@
                         <mat-label>Description</mat-label>
                         <textarea matInput placeholder="Input product description"
                             formControlName="description"></textarea>
+                        <mat-error *ngIf="productForm.get('name')?.hasError('required')">
+                            Description is required
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
@@ -191,6 +194,9 @@
                             <mat-option [value]="category.id">{{category.categoryName}}</mat-option>
                             }
                         </mat-select>
+                        <mat-error *ngIf="productForm.get('category')?.hasError('required')">
+                            Category is required
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
@@ -200,6 +206,9 @@
                             <mat-option [value]="type.id">{{type.type}}</mat-option>
                             }
                         </mat-select>
+                        <!-- <mat-error *ngIf="productForm.get('type')?.hasError('required')">
+                            Type is required
+                        </mat-error> -->
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
@@ -209,6 +218,9 @@
                             <mat-option [value]="color.colorId">{{color.description}}</mat-option>
                             }
                         </mat-select>
+                        <mat-error *ngIf="productForm.get('color')?.hasError('required')">
+                            Color is required
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
@@ -218,15 +230,21 @@
                             <mat-option [value]="brand.id">{{brand.name}}</mat-option>
                             }
                         </mat-select>
+                        <mat-error *ngIf="productForm.get('brand')?.hasError('required')">
+                            Brand is required
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
                         <mat-label>Sleeve Length</mat-label>
-                        <mat-select formControlName="o">
+                        <mat-select formControlName="sleeveLength">
                             @for (item of sleeveLengths; track item) {
                             <mat-option [value]="item.id">{{item.description}}</mat-option>
                             }
                         </mat-select>
+                        <mat-error *ngIf="productForm.get('sleeveLength')?.hasError('required')">
+                            Sleeve Length is required
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
@@ -236,15 +254,21 @@
                             <mat-option [value]="item.id">{{item.code}}</mat-option>
                             }
                         </mat-select>
+                        <mat-error *ngIf="productForm.get('size')?.hasError('required')">
+                            Size is required
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
                         <mat-label>Occasion</mat-label>
-                        <mat-select formControlName="o">
+                        <mat-select formControlName="occasion">
                             @for (item of occasions; track item) {
                             <mat-option [value]="item.id">{{item.occasion}}</mat-option>
                             }
                         </mat-select>
+                        <mat-error *ngIf="productForm.get('occasion')?.hasError('required')">
+                            Occasion is required
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
@@ -254,6 +278,9 @@
                             <mat-option [value]="item.id">{{item.seasonCode}}</mat-option>
                             }
                         </mat-select>
+                        <mat-error *ngIf="productForm.get('seasonCode')?.hasError('required')">
+                            Season Code is required
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
@@ -263,15 +290,21 @@
                             <mat-option [value]="item.id">{{item.necklineStyle}}</mat-option>
                             }
                         </mat-select>
+                        <mat-error *ngIf="productForm.get('neckline')?.hasError('required')">
+                            Neckline is required
+                        </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="stock-up-full-width">
                         <mat-label>Shoulder</mat-label>
-                        <mat-select formControlName="tag">
+                        <mat-select formControlName="shoulder">
                             @for (item of shoulders; track item) {
                             <mat-option [value]="item.id">{{item.shoulderStyle}}</mat-option>
                             }
                         </mat-select>
+                        <mat-error *ngIf="productForm.get('shoulder')?.hasError('required')">
+                            Shoulder is required
+                        </mat-error>
                     </mat-form-field>
                 </form>
                 <div class="button-group">

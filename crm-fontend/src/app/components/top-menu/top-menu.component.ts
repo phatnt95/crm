@@ -8,30 +8,46 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import {
+	IonButtons,
+	IonContent,
+	IonHeader,
+	IonMenu,
+	IonMenuButton,
+	IonTitle,
+	IonToolbar,
+} from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-top-menu',
-  imports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-  ],
-  templateUrl: './top-menu.component.html',
-  styleUrl: './top-menu.component.css',
+	selector: 'app-top-menu',
+	imports: [
+		MatToolbarModule,
+		MatButtonModule,
+		MatIconModule,
+		MatMenuModule,
+		MatDividerModule,
+		MatFormFieldModule,
+		MatInputModule,
+		FormsModule,
+		IonButtons,
+		IonContent,
+		IonHeader,
+		IonMenu,
+		IonMenuButton,
+		IonTitle,
+		IonToolbar,
+	],
+	templateUrl: './top-menu.component.html',
+	styleUrl: './top-menu.component.css',
 })
 export class TopMenuComponent {
-  searchText: string = '';
-  constructor(private router: Router) {}
-  onSearch() {
-    console.log('Searching for:', this.searchText);
-    // implement filter or navigation logic
-  }
-  navigateTo(page: string) {
-    this.router.navigate([page]);
-  }
+	searchText: string = '';
+	constructor(private router: Router) {}
+	onSearch() {
+		console.log('Searching for:', this.searchText);
+		// implement filter or navigation logic
+	}
+	navigateTo(page: string) {
+		this.router.navigate([page]);
+	}
 }

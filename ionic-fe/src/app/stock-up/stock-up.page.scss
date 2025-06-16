@@ -1,0 +1,32 @@
+// .stock-up-container {
+//   padding: 16px;
+// }
+
+.stock-up-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stock-up-header {
+  text-align: center;
+  color: #666;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.form-container,
+// .image-container {
+//   border: 2px dashed #ccc;
+//   background-color: #fff;
+//   padding: 16px;
+// }
+
+.stock-up-full-width {
+  width: 100%;
+}

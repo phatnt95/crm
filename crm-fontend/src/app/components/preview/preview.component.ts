@@ -31,6 +31,7 @@ export class PreviewComponent {
 		// This method is called when the "Try Me" button is clicked.
 		// It should trigger the product service to fetch products.
 		console.log('Try Me button clicked');
+		console.log(product.category);
 
 		this.footerImg = product.imageUrl;
 		// filter by category and populate right posision of category.
@@ -38,13 +39,11 @@ export class PreviewComponent {
 		// 	product.category === 'electronics';
 		// });
 		switch (product.category) {
-			case 'electronics':
-				console.log('Electronics category selected');
-				// Add logic to handle electronics category
+			case 'Tops':
+				this.bodyImg = product?.imageUrl;
 				break;
-			case 'clothing':
-				console.log('Clothing category selected');
-				// Add logic to handle clothing category
+			case 'Bottoms':
+				this.footerImg = product?.imageUrl;
 				break;
 			case 'home':
 				console.log('Home category selected');

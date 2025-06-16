@@ -101,19 +101,19 @@ export class StockUpComponent implements OnInit {
 		this.productForm = fb.group({
 			name: ['', Validators.required],
 			code: [''],
-			description: [''],
-			category: [''],
+			description: ['', Validators.required],
+			category: ['', Validators.required],
 			type: [''],
-			color: [''],
-			brand: [''],
-			size: [''],
+			color: ['', Validators.required],
+			brand: ['', Validators.required],
+			size: ['', Validators.required],
 			style: [''],
 			tag: [''],
-			sleeveLength: [''],
-			occasion: [''],
-			seasonCode: [''],
-			shoulder: [''],
-			neckline: [''],
+			sleeveLength: ['', Validators.required],
+			occasion: ['', Validators.required],
+			seasonCode: ['', Validators.required],
+			shoulder: ['', Validators.required],
+			neckline: ['', Validators.required],
 			image: [''],
 		});
 	}
@@ -213,6 +213,9 @@ export class StockUpComponent implements OnInit {
 	}
 
 	onSubmit() {
+		console.log(this.productForm.invalid);
+		console.log('Form submitted:', this.productForm.value);
+
 		if (this.productForm.invalid) {
 			this.productForm.markAllAsTouched(); // ✅ mark all fields as touched to show validation errors
 			return;

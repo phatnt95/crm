@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Organize</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="container">
+    <ion-row>
+      <ion-col size="4" class="left-column">
+        <!-- <ion-toolbar color="light">
+          <ion-title>Filter</ion-title>
+          <ion-buttons slot="end">
+            <ion-button fill="clear" (click)="onReset()">
+              <ion-icon name="refresh" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-text>Organize your products here.</ion-text> -->
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Filter Products</ion-card-title>
+            <ion-card-subtitle>Choose filter options</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+        </ion-card>
+        <form [formGroup]="productForm" class="filter-attributes">
+          <!-- Add ionic-selects or ion-inputs here -->
+        </form>
+      </ion-col>
+
+      <ion-col size="6" class="main-column">
+        <ion-card>
+          <!-- <ion-button expand="block" (click)="openBottomSheet()">Store Products</ion-button> -->
+          <ion-button id="open-modal" expand="block">Store Products</ion-button>
+          <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar color="primary">
+                  <ion-title>Choose Location</ion-title>
+                </ion-toolbar>
+              </ion-header>
+
+              <ion-content>
+                <form [formGroup]="inventoryForm" class="storage-form">
+                  <ion-item>
+                    <ion-label position="stacked">Location</ion-label>
+                    <ion-select required>
+                      <ion-select-option *ngFor="let item of locationOptions" [value]="item.uuId">
+                        {{ item.locationName }}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="stacked">Cabinet</ion-label>
+                    <ion-select required>
+                      <ion-select-option *ngFor="let item of cabinetOptions" [value]="item.uuId">
+                        {{ item.cabinetName }}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="stacked">Storage</ion-label>
+                    <ion-select formControlName="storageName" required>
+                      <ion-select-option *ngFor="let item of storageOptions" [value]="item.uuId">
+                        {{ item.storageName }}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="stacked">Bin</ion-label>
+                    <ion-select formControlName="binName" required>
+                      <ion-select-option *ngFor="let item of binOptions" [value]="item.uuId">
+                        {{ item.binNumber }}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-button expand="block" type="submit">Save</ion-button>
+                </form>
+              </ion-content>
+            </ng-template>
+
+          </ion-modal>
+          <ion-grid class="organize-container">
+            <ion-row>
+              <ion-col size="12" size-md="6" size-lg="4" *ngFor="let product of productDTOs">
+                <ion-card class="product-card">
+                  <ion-item lines="none">
+                    <ion-checkbox slot="start" (ionChange)="check($event, product)"></ion-checkbox>
+                    <ion-label class="card-title">{{ product.productName }}</ion-label>
+                  </ion-item>
+
+                  <img [src]="product.imageUrl" alt="{{ product.productName }}" />
+
+                  <ion-card-content>
+                    <p>{{ product.description }}</p>
+                    <p class="price">Price: ${{ product.price }}</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-col>
+
+      <!-- <ion-col size="3" class="right-column">
+        Right Column
+      </ion-col> -->
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-action-sheet trigger="open-action-sheet" header="Actions" [buttons]="actionSheetButtons">
+
+
+</ion-action-sheet>
